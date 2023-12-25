@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vi-width: 5px;
+  --vi-height: 25px;
+  --vi-items: 3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+.custom-scroll {
+  overflow-y: auto;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  background: #cccccc;
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #adadad;
+  border-radius: 7px;
+}
+
+.vi-loader {
+  width: calc(var(--vi-width) * var(--vi-items) * 1.5);
+  height: var(--vi-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  .vi-loader {
+    height: calc(var(--vi-height) - 5px);
+  }
+}
+
+.vi-loader .item {
+  width: var(--vi-width);
+  height: 100%;
+  background: #1c274c;
+  animation-name: vi-animation;
+  animation-duration: 0.5s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  border-radius: 20px;
+}
+
+@keyframes vi-animation {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+/* slow appearance animation */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+}
