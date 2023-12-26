@@ -34,17 +34,17 @@ function SearchBar() {
   return (
     <form
       onSubmit={onSubmit}
-      className="w-[80%] md:w-[70%] lg:w-[50%] relative"
+      className="w-full px-3 md:px-0 md:w-[70%] lg:w-[50%] relative"
     >
       <input
         onChange={onChange}
         value={search}
-        className="block w-full outline-none rounded-full px-3 py-3 ps-5 text-lg tracking-wider text-gray-700 border border-gray-300 bg-gray-50 focus:border-gray-400 focus:border-2"
+        className="block w-full outline-none rounded-full px-3 py-2 ps-5 text-md tracking-wider text-gray-700 border border-gray-300 bg-gray-50 focus:border-gray-400 focus:border-2 placeholder:text-sm"
         placeholder="Search for a song, artist, or album"
       />
-      <button type="submit" className="absolute end-4 bottom-3">
+      <button type="submit" className="absolute end-6 md:end-4 bottom-2">
         <img
-          className="w-7 hover:scale-110 transform transition-all duration-200 ease-in-out"
+          className="w-6 hover:scale-110 transform transition-all duration-200 ease-in-out"
           src="/search.svg"
           alt=""
         />

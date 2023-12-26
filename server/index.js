@@ -5,17 +5,23 @@ const mongo = require("./utils/mongo");
 const { isErrorResult } = require("./utils/common");
 const { searchTracks } = require("./controllers/search_tracks");
 const { addNewTrack } = require("./controllers/add_new_track");
+const { seedData } = require("./controllers/seed");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// allow all origins
+app.use((req, res, next) => {
+  console.log("Request:", req.method, req.url);
+  next();
+});
+
+// allowed for all origins
+// it's not secure but it's ok for this project as it's a test project
 app.use(
   cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
+    origin: function (origin, callback) {
+      return callback(null, true);
+    },
   })
 );
 
@@ -61,6 +67,8 @@ async function main() {
 
   app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+
+    seedData();
   });
 }
 

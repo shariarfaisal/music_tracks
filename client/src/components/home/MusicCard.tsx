@@ -40,7 +40,7 @@ function MusicCard(props: Music) {
       }`}
     >
       <div className="flex gap-x-2 w-[80%] md:w-[60%]">
-        <div className="w-[50px] md:w-[70px]">
+        <div className="w-[50px] h-[50px] md:w-[60px] md:h-[60px]">
           <img
             className="w-full h-full rounded-xl"
             src={imageUrl}
@@ -48,10 +48,10 @@ function MusicCard(props: Music) {
           />
         </div>
         <div>
-          <h3 className="text-lg font-semibold tracking-wider text-gray-700">
+          <h3 className="md:text-lg font-semibold tracking-wider text-gray-700">
             {title}
           </h3>
-          <div className="">{artist}</div>
+          <div className="text-sm md:text-md">{artist}</div>
         </div>
       </div>
       <div className="hidden md:block w-[20%]">{album}</div>
