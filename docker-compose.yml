@@ -3,11 +3,16 @@ services:
   server:
     build:
       context: ./server
+      dockerfile: Dockerfile.dev
     volumes:
       - /app/node_modules
       - ./server:/app # Mount the server directory to /app
     ports:
       - "5000:5000"
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     depends_on:
       - mongodb # Make sure the MongoDB service is started before the server
   web:
@@ -16,6 +21,10 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
     volumes:
       - /app/node_modules
       - ./client:/app # Mount the client directory to /app

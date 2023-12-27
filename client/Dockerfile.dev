@@ -4,9 +4,7 @@ WORKDIR '/app'
 
 COPY package.json .
 
-RUN apk --no-cache add python3 make g++
-
-RUN yarn --python=python3
+RUN yarn
 
 COPY . .
 
